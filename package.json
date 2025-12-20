@@ -1,0 +1,85 @@
+{
+  "name": "vim-jk",
+  "displayName": "vim-jk",
+  "description": "like accelerated-jk plugin for vim",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vim-jk.cursorUp",
+    "onCommand:vim-jk.cursorDown"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vim-jk.cursorUp",
+        "title": "vim-jk: Cursor Up (Accelerated)"
+      },
+      {
+        "command": "vim-jk.cursorDown",
+        "title": "vim-jk: Cursor Down (Accelerated)"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "vim-jk",
+      "properties": {
+        "vim-jk.accelerationTable": {
+          "type": "array",
+          "default": [
+            7,
+            12,
+            17,
+            21,
+            24,
+            26,
+            28,
+            30
+          ],
+          "description": "Number of key presses required to add 1 motion per key press.",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "vim-jk.resetTime": {
+          "type": "integer",
+          "default": 150,
+          "description": "Acceleration resets after this many milliseconds."
+        },
+        "vim-jk.commandMode": {
+          "type": "string",
+          "default": "vscodevim",
+          "description": "How to perform up/down motion.",
+          "enum": [
+            "vscodevim",
+            "vscodevim-gj-gk",
+            "cursormove"
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.107.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.48.1",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
