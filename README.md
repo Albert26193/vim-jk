@@ -1,5 +1,7 @@
 # vim-jk
 
+⚠️ This project is currently work in progress.
+
 Accelerated `j/k`-style vertical movement for VS Code, designed to be used alongside VSCodeVim without breaking count-based motions like `10j`.
 
 ## How to build
